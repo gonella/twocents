@@ -1,0 +1,1 @@
+java -cp ../../com.twocents.core/lib/hsqldb.jar org.hsqldb.util.DatabaseManager --url jdbc:hsqldb:file:twocents

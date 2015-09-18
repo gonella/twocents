@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="com.twocents.report" default="generate" basedir=".">
+
+	<import file="../build-common.xml" />
+	<property name="package" value="com.twocents.report.jar" />
+
+	<fileset dir="${src}" id="dist.fileset">
+		<include name="/com/twocents/report/resources/images/**/*.*" />
+		<include name="/com/twocents/report/resources/**/*.properties" />
+		<include name="/com/twocents/report/jasper/xml/**/*.*" />
+		<include name="com/jasperassistant/designer/viewer/**/*.properties" />
+	</fileset>
+
+	<path id="compile-classpath">
+		<path refid="core-classpath" />
+		<path refid="report-classpath" />
+		<path refid="ui-classpath" />
+		<fileset dir="../${core.dist}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="pre.compile" depends="core.dist" />
+
+	<target name="core.dist">
+		<ant antfile="../${core}/build.xml" target="dist" inheritAll="false" />
+	</target>
+
+</project>

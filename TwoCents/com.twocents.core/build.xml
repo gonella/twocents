@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="com.twocents.core" default="generate" basedir=".">
+
+	<import file="../build-common.xml" />
+
+	<property name="package" value="com.twocents.core.jar" />
+
+	<property name="ui.project" value="../com.twocents.ui" />
+	<property name="ui.project.dist" value="${ui.project}/build/dist" />
+
+	<fileset dir="${src}" id="dist.fileset">
+		<include name="/com/twocents/resources/images/**/*.*" />
+		<include name="/com/twocents/resources/**/*.xls" />
+		<include name="/com/twocents/resources/**/*.properties" />
+		<include name="/com/twocents/spring/**/*.xml" />
+		<include name="**/*.xml" />
+		<include name="**/*.properties" />
+	</fileset>
+	
+    <path id="compile-classpath">
+        <path refid="core-classpath" />
+    </path>
+	
+</project>

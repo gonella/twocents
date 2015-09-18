@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="TwoCents Project" default="release App" basedir=".">
+
+	<import file="../build-common.xml" />
+	<property name="package" value="com.twocents.main.jar" />
+
+	<fileset dir="${src}" id="dist.fileset">
+	</fileset>
+
+
+	<property file="build.properties" />
+
+	<property name="core" value="../com.twocents.core" />
+	<property name="core.lib" value="${core}/lib" />
+	<property name="report" value="../com.twocents.report" />
+	<property name="report.lib" value="${report}/lib" />
+	<property name="adapter" value="../com.twocents.adapter" />
+	<property name="adapter.lib" value="${adapter}/lib" />
+	<property name="ui" value="../com.twocents.ui" />
+	<property name="ui.lib" value="${ui}/lib" />
+	<property name="license" value="../com.twocents.license" />
+	<property name="license.lib" value="${license}/lib" />
+	<property name="main" value="../com.twocents.main" />
+	<property name="main.lib" value="${main}/lib" />
+	<property name="build" value="${main}/build" />
+	<property name="app" value="${build}/app" />
+	<property name="app_x64" value="${build}/app_64" />
+	<property name="work" value="${main}/work" />
+
+	<property name="installer" value="../com.twocents.installer" />
+	<property name="32Bit" value="true" />
+
+	<target name="release Installer" depends="release App" description="Creates the App installer">
+		<echo message="Gerando os Installers 32 e 64 bits para as Apps Geradas" />
+		<ant antfile="${installer}/build.xml" target="generate" inheritAll="false" />
+	</target>
+
+	<target name="release App" depends="clean,deploy">
+
+		<echo message="Limpando ambiente da MAIN" />
+		<ant antfile="../com.twocents.main/buildmain.xml" target="clean" inheritAll="false" />
+
+		<echo message="Gerando a App" />
+		<ant antfile="${main}/buildmain.xml" target="dist" inheritAll="false" />
+
+		<mkdir dir="${app}/lib" />
+		<echo message="Copiando bibliotecas para a instalação" />
+
+		<copy todir="${app}/lib" flatten="true" verbose="true">
+			<fileset dir="../lib">
+				<exclude name="**/x64/*.jar" />
+				<include name="**/*.jar" />
+				<exclude name="unit*" />
+				<exclude name="*test*" />
+			</fileset>
+		</copy>
+
+
+		<echo message="Copiando as distribuições para a instalação" />
+		<copy todir="${app}">
+			<fileset dir="../${core}/build/dist">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="../${report}/build/dist">
+				<include name="*.jar" />
+			</fileset>
+
+			<fileset dir="../${adapter}/build/dist">
+				<include name="*.jar" />
+			</fileset>
+
+			<fileset dir="../${ui}/build/dist">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="../${license}/build/dist">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${main}/build/dist">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+
+		<copy todir="${app}">
+			<fileset dir="${basedir}/work">
+				<include name="TwoCents.exe" />
+			</fileset>
+		</copy>
+		<echo message="TODO : O Pathconverter não esta colocando lib/ para esse item no manifest, estou fazendo essa gambiarra" />
+
+		<move todir="${app}">
+			<fileset dir="${app}/lib">
+				<include name="antlr-2.7.6.jar" />
+			</fileset>
+		</move>
+
+		<mkdir dir="${app}/cache" />
+		<mkdir dir="${app}/images" />
+
+		<copy todir="${app}/images">
+			<fileset dir="${work}/images">
+				<include name="**/*.ico" />
+			</fileset>
+		</copy>
+
+		<ant antfile="${installer}/build.xml" target="createExecutable" inheritAll="false" />
+		<copy todir="${app}">
+			<fileset dir="${installer}/build/dist">
+				<include name="TwoCents.exe" />
+			</fileset>
+		</copy>
+
+		<echo message="Configurnado os arquivos para a distribuicao 64 bits." />
+		<mkdir dir="${build}/app_x64" />
+		<copy todir="${build}/app_x64">
+			<fileset dir="${app}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<copy file="../lib/swt/x64/swt.jar" todir="${build}/app_x64/lib" flatten="true" overwrite="true" />
+
+	</target>
+
+	<target name="deploy">
+		<ant antfile="${main}/buildmain.xml" target="dist.dependencies" inheritAll="false" />
+	</target>
+
+	<target name="post.clean">
+
+		<echo message="Limpando ambiente do CORE" />
+		<ant antfile="../com.twocents.core/build.xml" target="clean" inheritAll="false" />
+		<echo message="Limpando ambiente do REPORT" />
+		<ant antfile="../com.twocents.report/build.xml" target="clean" inheritAll="false" />
+		<echo message="Limpando ambiente do ADAPTER" />
+		<ant antfile="../com.twocents.adapter/build.xml" target="clean" inheritAll="false" />
+		<echo message="Limpando ambiente do LICENSE" />
+		<ant antfile="../com.twocents.license/build.xml" target="clean" inheritAll="false" />
+		<echo message="Limpando ambiente da UI" />
+		<ant antfile="../com.twocents.ui/build.xml" target="clean" inheritAll="false" />
+		<echo message="Limpando ambiente do INSTALLER" />
+		<ant antfile="../com.twocents.installer/build.xml" target="clean" inheritAll="false" />
+
+		<echo message="Limpando build da App" />
+		<delete dir="${build}" />
+	</target>
+
+	<target name="compile" description="Compile the entire source" depends="pre.compile">
+		<ant antfile="buildmain.xml" target="dist" inheritAll="false" />
+	</target>
+
+</project>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="com.twocents.main" default="generate" basedir=".">
+
+	
+	<import file="../build-common.xml" />
+	<property name="package" value="com.twocents.main.jar" />
+
+	<fileset dir="${src}" id="dist.fileset">
+		<include name="/*.properties" />
+	</fileset>
+
+	<path id="projects.classpath">
+		<fileset dir="../${core.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="../${ui.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="../${adapter.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="../${report.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="../${license.dist}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="compile-classpath">
+		<path refid="core-classpath" />
+		<path refid="ui-classpath" />
+		<path refid="report-classpath" />
+		<path refid="unitTest-classpath" />
+		<path refid="installer-classpath" />
+		<path refid="adapter-classpath" />
+		<path refid="projects.classpath" />
+	</path>
+
+
+	<target name="createManifest">
+		<tstamp>
+			<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+
+		<manifest file="${build}/MANIFEST.MF">
+			<attribute name="Built-By" value="${builtby}" />
+			<attribute name="Main-Class" value="com.twocents.main.Main" />
+			<attribute name="Implementation-Version" value="${release.num}" />
+			<attribute name="Built-Date" value="${TODAY}" />
+			<attribute name="Class-Path" value="${classpath.string} ${projects.string}" />
+		</manifest>
+	</target>
+
+	<target name="pre.compile" depends="dist.dependencies" />
+
+	<target name="dist.dependencies">
+		<ant antfile="../${ui}/build.xml" target="dist" inheritAll="false" />
+		<ant antfile="../${license}/build.xml" target="dist" inheritAll="false" />
+
+		<pathconvert property="projects.string" pathsep=" ">
+			<path refid="projects.classpath" />
+			<flattenmapper />
+		</pathconvert>
+
+		<pathconvert property="classpath.string" pathsep=" lib/">
+			<path refid="core-classpath" />
+			<path refid="ui-classpath" />
+			<path refid="report-classpath" />
+			<path refid="unitTest-classpath" />
+			<path refid="installer-classpath" />
+			<path refid="adapter-classpath" />
+			<flattenmapper />
+		</pathconvert>
+	</target>
+
+</project>

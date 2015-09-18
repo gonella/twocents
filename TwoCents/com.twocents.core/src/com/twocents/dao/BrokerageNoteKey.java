@@ -1,0 +1,26 @@
+package com.twocents.dao;
+
+public enum BrokerageNoteKey {
+
+	
+	CORRETAGEM("CORRETAGEM"), 
+	ISS("ISS"), 
+	EMOLUMENTOS("EMOLUMENTOS"), 
+	TAXADELIQUIDACAO("TAXADELIQUIDACAO"), 
+	VALORDASOPERACOES("VALORDASOPERACOES"), 
+	VALORLIQUIDODASOPERACOES("VALORLIQUIDODASOPERACOES"), 
+	TOTALBOVESPAESOMA("TOTALBOVESPAESOMA"), 
+	TOTALCBLC("TOTALCBLC"), 
+	CORRETAGEMEDESPESAS("CORRETAGEMEDESPESAS"), DATE("DATE"), MONTH("MONTH"),YEAR("YEAR")
+	;
+	
+	private String key;
+	
+	private BrokerageNoteKey(String key) {
+		this.key = key;
+	}
+	
+	public String toString(){
+		return this.key;
+	}
+}

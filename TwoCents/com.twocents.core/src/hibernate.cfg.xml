@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	    <property name="hibernate.show_sql">true</property>  
+		
+		<mapping class="com.twocents.model.Account"/>
+		<mapping class="com.twocents.model.AccountFollowUp"/>
+		<mapping class="com.twocents.model.StockBroker"/>
+		<mapping class="com.twocents.model.Broker"/>
+		<mapping class="com.twocents.model.Tax"/>
+		<mapping class="com.twocents.model.FixedTax"/>
+		<mapping class="com.twocents.model.VariableTax"/>
+		<mapping class="com.twocents.model.Custody"/>
+		<mapping class="com.twocents.model.Darf"/>
+		<mapping class="com.twocents.model.Feeder"/>
+		<mapping class="com.twocents.model.Operation"/>
+		<mapping class="com.twocents.model.Sell"/>
+		<mapping class="com.twocents.model.Buy"/>
+		<mapping class="com.twocents.model.CallSell"/>
+		<mapping class="com.twocents.model.Quote"/>
+		<mapping class="com.twocents.model.Stock"/>
+		<mapping class="com.twocents.model.Option"/>
+		<mapping class="com.twocents.model.TwUser"/>
+		<mapping class="com.twocents.model.Document"/>
+		<mapping class="com.twocents.model.CommentPattern"/>
+		<mapping class="com.twocents.model.Feed"/>
+		<mapping class="com.twocents.model.FeedItem"/>
+		<mapping class="com.twocents.model.NetworkConfiguration"/>
+		<mapping class="com.twocents.model.QuoteConfiguration"/>
+		<mapping class="com.twocents.model.GeneralConfiguration"/>
+		<mapping class="com.twocents.model.StateConfiguration"/>
+		<mapping class="com.twocents.model.Configuration"/>	
+		<mapping class="com.twocents.model.BrokerageNote"/>
+		<mapping class="com.twocents.model.BrokerageNoteItem"/>
+		
+		
+	</session-factory>
+</hibernate-configuration>

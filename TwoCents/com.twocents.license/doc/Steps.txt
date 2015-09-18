@@ -1,0 +1,27 @@
+Win32OpenSSL
+
+OPENSSL - http://www.ibm.com/developerworks/library/j-certgen/
+
+
+http://www.bouncycastle.org/documentation.html
+
+http://exampledepot.com/egs/java.security.cert/CreateCert.html?l=rel
+
+http://exampledepot.com/egs/java.security.cert/ExportCert.html?l=rel
+
+
+http://www.herongyang.com/crypto/
+
+http://www.guj.com.br/java.tutorial.artigo.141.1.guj
+
+- Exporting a Certificate to a File or text format
+http://exampledepot.com/egs/java.security.cert/ExportCert.html?l=rel
+
+
+##### KEYTOOL
+- Para gerar o certificado
+
+keytool -genkey -alias twocents -keyalg RSA -keypass tchpcomplab -storepass tchpcomplab -keystore twocents_keystore.jks -dname "cn=TWOCENTS, ou=FinanceApp, o=TWOCENTS, l=Porto Alegre, S=RS, c=BR"
+
+- Para extrair a chave pública
+keytool -export -alias twocents -keystore twocents_keystore.jks -file twocents_cert_public.x509

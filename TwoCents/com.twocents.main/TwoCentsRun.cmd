@@ -1,0 +1,1 @@
+java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=8765,suspend=n -jar com.twocents.main.jar 

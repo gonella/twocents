@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="com.twocents.ui" default="generate" basedir=".">
+
+	
+	<import file="../build-common.xml" />
+
+	<property name="package" value="com.twocents.ui.jar" />
+
+	<property name="report.project" value="../com.twocents.report" />
+	<property name="report.project.dist" value="${report.project}/build/dist" />
+
+	<property name="core.project" value="../com.twocents.core" />
+	<property name="core.project.dist" value="${core.project}/build/dist" />
+
+	<property name="adapter.project" value="../com.twocents.adapter" />
+	<property name="adapter.project.dist" value="${adapter.project}/build/dist" />
+	<property name="projects.string" value=" " />
+
+	<path id="adapter-dist-classpath">
+		<fileset dir="${adapter.project.dist}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="report-dist-classpath">
+		<fileset dir="${report.project.dist}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="core-dist-classpath">
+		<fileset dir="${core.project.dist}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="ui-dist-classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="compile-classpath">
+		<path refid="report-dist-classpath" />
+		<path refid="core-dist-classpath" />
+		<path refid="core-classpath" />
+		<path refid="ui-classpath" />
+		<path refid="report-classpath" />
+		<path refid="adapter-classpath" />
+		<path refid="adapter-dist-classpath" />
+	</path>
+
+	<fileset dir="${src}" id="dist.fileset">
+		<include name="/com/twocents/ui/resources/**/*.*" />
+		<include name="/com/twocents/ui/resources/images/**/*.*" />
+	</fileset>
+
+	<target name="pre.compile">
+		<ant antfile="../${report}/build.xml" target="dist" inheritAll="false" />
+		<ant antfile="../${adapter}/build.xml" target="dist" inheritAll="false" />
+	</target>
+
+</project>

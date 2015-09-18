@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="common" default="generate" basedir=".">
+
+	<property name="src" value="${basedir}/src" />
+	<property name="build" value="${basedir}/build" />
+	<property name="classes" value="${build}/classes" />
+	<property name="dist" value="${build}/dist" />
+	<property name="lib" value="${basedir}/lib" />
+
+	<!--<buildnumber file="build.num"/>-->
+
+	<property name="core" value="com.twocents.core" />
+	<property name="core.lib" value="${core}/lib" />
+	<property name="core.dist" value="${core}/build/dist" />
+	<property name="report" value="com.twocents.report" />
+	<property name="report.lib" value="${report}/lib" />
+	<property name="report.dist" value="${report}/build/dist" />
+	<property name="adapter" value="com.twocents.adapter" />
+	<property name="adapter.lib" value="${adapter}/lib" />
+	<property name="adapter.dist" value="${adapter}/build/dist" />
+	<property name="ui" value="com.twocents.ui" />
+	<property name="ui.lib" value="${ui}/lib" />
+	<property name="ui.dist" value="${ui}/build/dist" />
+	<property name="license" value="com.twocents.license" />
+	<property name="license.lib" value="${license}/lib" />
+	<property name="license.dist" value="${license}/build/dist" />
+
+	<path id="dist.classpath">
+		<fileset dir="${core.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${ui.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${adapter.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${report.dist}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${license.dist}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="core-classpath">
+		<fileset dir="../lib">
+			<include name="bsh/bsh-2.0b1.jar" />
+			<include name="jdom/dom4j-1.6.1.jar" />
+			<include name="ehcache/ehcache-1.2.3.jar" />
+			<include name="persistence/ejb3-persistence.jar" />
+			<include name="hibernate/hibernate-annotations.jar" />
+			<include name="hibernate/hibernate-commons-annotations.jar" />
+			<include name="hibernate/hibernate-entitymanager.jar" />
+			<include name="hibernate/hibernate-tools.jar" />
+			<include name="hibernate/hibernate-validator.jar" />
+			<include name="hibernate/hibernate3.jar" />
+			<include name="javassist/javassist.jar" />
+			<include name="jboss/jboss-archive-browsing.jar" />
+			<include name="persistence/jdbc2_0-stdext.jar" />
+			<include name="jdom/jdom.jar" />
+			<include name="google/jgmail.jar" />
+			<include name="persistence/jta.jar" />
+			<include name="jtidy/jtidy-r8-20060801.jar" />
+			<include name="log4j/log4j-1.2.15.jar" />
+			<include name="mail/mailapi.jar" />
+			<include name="ognl/ognl-2.6.11.jar" />
+			<include name="mail/pop3.jar" />
+			<include name="rome/rome-0.9.jar" />
+			<include name="mail/smtp.jar" />
+			<include name="spring/spring.jar" />
+			<include name="xml/xml-apis.jar" />
+			<include name="hsqldb/hsqldb.jar" />
+			<include name="lucene/lucene-analyzers-3.0.3.jar" />
+			<include name="lucene/lucene-core-3.0.3.jar" />
+			<include name="lucene/lucene-queryparser-3.0.3.jar" />
+			<include name="lucene/lucene-spellchecker-3.0.3.jar" />
+			<include name="google/gdata-core-1.0.jar" />
+			<include name="google/gdata-docs-3.0.jar" />
+			<include name="google/google-collect-1.0-rc1.jar" />
+			<include name="jxl/jxl.jar" />
+			<include name="jmimemagic/jmimemagic-0.1.0.jar" />
+			<include name="ant/antlr-2.7.6.jar" />
+			<include name="asm/asm-attrs.jar" />
+			<include name="asm/asm.jar" />
+			<include name="aspectj/aspectjrt.jar" />
+			<include name="aspectj/aspectjweaver.jar" />
+			<include name="apache-commons/commons-codec-1.4.jar" />
+			<include name="apache-commons/commons-collections-3.1.jar" />
+			<include name="apache-commons/commons-httpclient-3.1.jar" />
+			<include name="apache-commons/commons-lang.jar" />
+			<include name="apache-commons/commons-logging-1.1.1.jar" />
+			<include name="apache-commons/commons-digester-2.0.jar" />
+			<include name="apache-commons/commons-beanutils-1.7.0.jar" />
+			<include name="apache-commons/commons-io-2.1.jar" />
+			<include name="cglib/cglib-2.1.3.jar" />
+		</fileset>
+	</path>
+
+	<path id="ui-classpath">
+		<fileset dir="../lib">
+			<include name="jFace/jface.jar" />
+			<include name="nebula/cdatetime-0.9.0.jar" />
+			<include name="nebula/org.eclipse.nebula.widgets.datechooser_1.0.0.jar" />
+			<include name="nebula/org.eclipse.nebula.widgets.formattedtext_1.0.0.jar" />
+			<include name="nebula/org.eclipse.nebula.widgets.gallery.jar" />
+			<include name="nebula/org.eclipse.nebula.widgets.pgroup_1.0.0.jar" />
+			<include name="nebula/org.eclipse.nebula.widgets.pshelf_1.0.0.jar" />
+			<include name="swt/baseline.jar" />
+			<include name="swt/swing2swt.jar" />
+			<include name="swt/swt-grouplayout.jar" />
+			<include name="swt/x64/swt.jar" />
+			<include name="vietspider/headvances.core.vietspider.common-1.0.jar" />
+			<include name="vietspider/headvances.core.vietspider.widget-1.0.jar" />
+		</fileset>
+	</path>
+
+	<path id="report-classpath">
+		<fileset dir="../lib">
+			<include name="dynamicjasper/DynamicJasper-3.1.8.jar" />
+			<include name="eclipse/eclipse-runtime-2.1.0.jar" />
+			<include name="pdf/iText-2.1.5.jar" />
+			<include name="pdf/jasperreports-4.0.2.jar" />
+			<include name="pdf/jcommon-1.0.12.jar" />
+			<include name="jfreechart/jfreechart-1.0.13.jar" />
+		</fileset>
+	</path>
+
+	<path id="installer-classpath">
+		<fileset dir="../lib">
+			<include name="nsis/nsisant-1.3.jar" />
+		</fileset>
+	</path>
+
+	<path id="adapter-classpath">
+		<fileset dir="../lib">
+			<include name="jericho/jericho-html-3.1.jar" />
+		</fileset>
+	</path>
+
+	<path id="unitTest-classpath">
+		<fileset dir="../lib">
+			<include name="httpunit/httpunit.jar" />
+			<include name="junit/junit-4.6.jar" />
+		</fileset>
+	</path>
+
+	<path id="classpath">
+		<path refid="core-classpath" />
+		<path refid="ui-classpath" />
+		<path refid="report-classpath" />
+		<path refid="unitTest-classpath" />
+		<path refid="installer-classpath" />
+		<path refid="adapter-classpath" />
+	</path>
+
+	<target name="createManifest">
+		<tstamp>
+			<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+
+		<manifest file="${build}/MANIFEST.MF">
+			<attribute name="Built-By" value="${builtby}" />
+			<attribute name="Implementation-Version" value="${release.num}" />
+			<attribute name="Built-Date" value="${TODAY}" />
+		</manifest>
+	</target>
+
+	<target name="generate" depends="clean, dist" description="Creates the .jar archive doing a cleaning up">
+	</target>
+
+	<target name="dist" description="Creates the .jar archive" depends="compile, createManifest">
+		<mkdir dir="${dist}" />
+
+		<jar destfile="${dist}/${package}" basedir="${classes}" compress="true" includes="**/*.*" manifest="${build}/MANIFEST.MF">
+			<fileset refid="dist.fileset">
+			</fileset>
+		</jar>
+
+		<delete>
+			<fileset dir="${build}">
+				<include name="*.MF" />
+				<exclude name="exclude" />
+			</fileset>
+		</delete>
+	</target>
+
+
+	<target name="pre.compile" />
+
+	<target name="compile" description="Compile the Source" depends="pre.compile">
+		<mkdir dir="${classes}" />
+		<javac destdir="${classes}" debug="on" deprecation="on" optimize="on" classpathref="compile-classpath">
+			<src path="${src}" />
+		</javac>
+	</target>
+
+	<target name="post.clean" />
+
+	<target name="clean" description="cleans up the project">
+		<delete dir="${build}" />
+		<antcall target="post.clean">
+		</antcall>
+	</target>
+
+</project>

@@ -1,0 +1,12 @@
+
+http://code.google.com/javadevtools/wbpro/features/swt/data_binding/swt_bindings.html
+
+http://stackoverflow.com/questions/265777/what-is-the-best-open-source-java-charting-library-other-than-jfreechart
+
+CHARTS:
+
+http://code.google.com/p/swt-xy-graph/
+
+http://sourceforge.net/projects/jchartlib/
+
+http://trac.erichseifert.de/gral/

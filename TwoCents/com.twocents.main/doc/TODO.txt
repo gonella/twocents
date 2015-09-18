@@ -1,0 +1,118 @@
+#########TODO############
+
+** Ver planilhas de controle de carteira, tirar uma base.
+
+**Ferramentas a serem analisadas:
+
+*Financeiras
+https://www.mycapital.com.br
+http://www.financialonline.com.br/products/financial/
+http://www.financedesktop.com.br/
+http://www.gnucash.org/features.phtml
+http://jfinancas.com.br/index.html
+http://www.bolsacontrole.com.br/
+
+*Database
+http://www.h2database.com/html/main.html
+
+
+
+
+* Features de cada versão
+
+    O que vai ser implementado a mais para cada versão:
+
+    - [PROFESSIONAL] Possibilidade de mandar email com relatorios - Clique com botao direito em cima da conta, aparece um item. 
+    - [PROFESSIONAL] Geracao de relatorio com imposto devido
+	- [PROFESSIONAL] Calculo de risco de investimento
+
+    - [ SERVICO ] - Imposto de renda remoto.	
+
+* Marketing
+
+	- Algumas features especiais estaráo presente, porém desabilitades, fazendo referencia para a versão paga(PRO).
+
+	- Como fazer o lançamento da ferramenta?
+		- Notificações em foruns de investidores
+		- Panfletagem em eventos (ex.: Expomoney)
+		- Predio de PRIVATTO
+		- Comunidades (Facebook, Twitter)
+		- Website
+		- FGV
+		- Fazer chegar nos contadores
+		- PagSeguro.com.br
+		- Google Adsense
+		- Banner de outras empresas
+			
+	
+* Estrategia de Negocio/Lancamento * 
+
+    - Ambas versões 
+        - Pagar por relatorio, liberar um installer para instalar SOMENTE o relatorio comprado.
+
+
+	- Versao Community
+		- Publico alvo 
+			Investidor pessoa fisica para controle de sua carteira de acoes
+			Unico clube de investimento
+			
+		- Arrecadacao de fundos
+			Banners??
+			Doacoes via Pay Pal??
+			Investidor anjo??			
+		
+		- Distribuicao e Instalacao 
+			Download do instalador no proprio site
+		
+		- Licença
+			Livre
+
+	- Versao Professional
+		- Public alvo
+			Investidor pessoa fisica (interessado em mais funcionalidades)
+			Empresas de agente autonomo (pequena empresa, poucos clientes)
+			Clubes de investimento
+
+		- Arrecadacao de fundos
+			Pagto via pag seguro
+			Pay pal
+			Google checkout
+			Banner na aplicação
+			Licença
+			
+		- Distribuicao e Instalacao 
+			Download do instalador no proprio site 
+		
+		- Licença
+			Serial number
+				
+
+* TC Mobile (Android 1.0)
+
+	- Implementar das abas de opercao e custodia para para android
+	- Sincronizacao com google account
+	
+	
+* TC 1.1
+
+	- Quando o usuario passar o mouse por cima da operacao fazer um tooltip q apresente as informacoes detalhas da operacao(comment..).
+	- Fazer um relatorio cruzando o desempenho da carteira com um indice ou papel
+	- Transformar o SWT em EXE( ver o GCC Java)
+	- Possibilidade de lancar dividendos e JCP(Juros por capital proprio)
+	- Suporte a desdobramento e agregacao.
+	- Agrupar operacoes por conta/ativo/etc.
+	- Simulacao de operacoes
+	- Quando o cara usar o Serial.. esse mesmo irar criar um logo como nome da pessoa q pagou nos reports.
+	
+* TC I18N
+
+	- Internacionalizar o TW (nota de corretagem internacional)
+	- Implementar suporte de definicao de notas de corretagem (meta dados para uma nota de corretagem)
+	
+
+**Taxas
+http://wiki.advfn.com/pt/Corretagem#Corretagem
+
+**Imagens do mercado financeiros
+http://www1.istockphoto.com
+

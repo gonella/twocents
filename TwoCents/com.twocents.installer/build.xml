@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="com.twocents.installer" default="generate" basedir=".">
+
+	<import file="../build-common.xml" />
+	<property name="log.file" value="log.txt" />
+
+	<path id="compile-classpath">
+	</path>
+
+	<fileset dir="${src}" id="dist.fileset">
+	</fileset>
+
+	<taskdef name="nsis" classname="com.danielreese.nsisant.Task">
+		<classpath refid="classpath" />
+	</taskdef>
+
+	<target name="generate.32">
+		<mkdir dir="${dist}" />
+		<echo message="Gerando o installer para aplicacao (32 bits), vai rodar em paralelo, acompanhar pelo arquivo de log: [${log.file}]" />
+
+		<nsis script="TwoCentsInstaller_x86.nsi" verbosity="4" out="${log.file}" noconfig="yes">
+			<scriptcmd cmd="AutoCloseWindow true" />
+		</nsis>
+
+		<move file="TwoCents-0.01-setup.exe" todir="${dist}" />
+		<move file="${dist}/TwoCents-0.01-setup.exe" tofile="${dist}/TwoCents-0.01-setup_x86.exe" />
+	</target>
+
+	<target name="generate.64">
+		<mkdir dir="${dist}" />
+		<echo message="Gerando o installer para aplicacao (64 bits), vai rodar em paralelo, acompanhar pelo arquivo de log: [${log.file}]" />
+
+		<nsis script="TwoCentsInstaller_x64.nsi" verbosity="4" out="${log.file}" noconfig="yes">
+			<scriptcmd cmd="AutoCloseWindow true" />
+		</nsis>
+
+		<move file="TwoCents-0.01-setup.exe" todir="${dist}" />
+		<move file="${dist}/TwoCents-0.01-setup.exe" tofile="${dist}/TwoCents-0.01-setup_x86_64.exe" />
+	</target>
+	
+    <target name="createExecutable">
+        <echo message="Gerando o .exe para o TwoCents" />
+
+        <nsis script="launcherCreator.nsi" verbosity="4" out="${log.file}" noconfig="yes">
+            <scriptcmd cmd="AutoCloseWindow true" />
+        </nsis>
+
+        <move file="TwoCents.exe" todir="${dist}" />
+    </target>
+	
+	
+	<target name="generate" depends="generate.32, generate.64, createExecutable">
+	</target>
+
+</project>
