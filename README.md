@@ -1,17 +1,32 @@
 # Introduction
 TwoCents - Manage your buy/sell orders of brazilian stocks and calculate all tax involved. 
 
+#Architecture
+
+ 1. Desktop app built using SWT(https://www.eclipse.org/swt/) and Nebula(https://eclipse.org/nebula/)
+ 2. Used Apache Lucene framework (https://lucene.apache.org/). For search stock in quick way. 
+ 3. Reports are built using Jasper Reports framework (http://community.jaspersoft.com/). 
+ 4. Database HSQLDB (http://hsqldb.org/). 
+ 5. Transaction/DAO layers handled by Spring and Hibernate. 
+ 6. Windows Installer used is NIS. (http://nsis.sourceforge.net/Main_Page)
+ 7. 
 
 # Features
 
- 1. 
- 2. License mechanism.
- 2. Manage many customer/stockbroker accounts
- 2. 
-
+ 1. Allow 3rd partners include advertisements pictures. 
+ 2. Generate brokerage notes for the transactions. 
+ 2. Update stock prices based on Yahoo finance. 
+ 3. License mechanism.
+ 4. Manage many customer/stockbroker accounts
+ 5. Export reports.
+ 6. Import/Export buy and sell orders into spreadsheets. 
+ 7. Backup data to Google Drive. 
+ 
 # How execute?
 
- 1.
+ 1. Import folder "TwoCents" as maven project.
+ 2. Execute class "com.twocents.main.Main" under folder TwoCents\com.twocents.main
+ 2. First time it will ask to inform user/broker information. You can add more after. 
 
 ## Application screenshot
 
@@ -23,7 +38,14 @@ TwoCents - Manage your buy/sell orders of brazilian stocks and calculate all tax
 ![TwoCents Report Brokerage](https://github.com/gonella/twocents/blob/master/TwoCents/com.twocents.main/doc/TwoCents02_Reports_TaxInvolved.png "TwoCents Report Brokerage")
 
 # Limitation
+ 1. Support ONLY Windows x64
+ 2. 
 
 # Known issues
 
- 1. 
+ 1. After migrate ant to maven, some funcionalities stopped to work. E.g. generate install binary(NIS). For this reason we asked to import as maven project. 
+ 2. 
+
+# TODO
+ 1. Fix issues with NIS. NSIS (Nullsoft Scriptable Install System) is a professional open source system to create Windows installers.
+ 2. 
