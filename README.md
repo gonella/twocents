@@ -11,7 +11,6 @@ See the pictures below for more details.
  4. Database HSQLDB (http://hsqldb.org/). 
  5. Transaction/DAO layers handled by Spring and Hibernate. 
  6. Windows Installer used is NIS. (http://nsis.sourceforge.net/Main_Page)
- 7. 
 
 # Features
 
@@ -40,14 +39,14 @@ See the pictures below for more details.
 ![TwoCents Report Brokerage](https://github.com/gonella/twocents/blob/master/TwoCents/com.twocents.main/doc/TwoCents02_Reports_TaxInvolved.png "TwoCents Report Brokerage")
 
 # Limitation
- 1. Support ONLY Windows x64
- 2. 
+ 1. Support ONLY Windows x64.
 
 # Known issues
 
  1. After migrate ant to maven, some funcionalities stopped to work. E.g. generate install binary(NIS). For this reason we asked to import as maven project. 
- 2. 
 
 # TODO
  1. Fix issues with NIS. NSIS (Nullsoft Scriptable Install System) is a professional open source system to create Windows installers.
- 2. 
+ 2. Fix some layout issues. 
+ 3. Update some tax rules. 
+ 3. Add more reports.
