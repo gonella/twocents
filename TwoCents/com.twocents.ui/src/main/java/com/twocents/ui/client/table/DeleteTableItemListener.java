@@ -12,50 +12,50 @@ import com.twocents.ui.util.DialogUtil;
 
 public class DeleteTableItemListener implements Listener {
 
-	private Table sourceTable;
-	private TableAction<Object> action;
-	private String contentMessage;
+    private Table sourceTable;
+    private TableAction<Object> action;
+    private String contentMessage;
 
-	public DeleteTableItemListener(Table sourceTable, String contentMessage,
-			TableAction<Object> action) {
-		this.sourceTable = sourceTable;
-		this.contentMessage = contentMessage;
-		this.action = action;
-	}
+    public DeleteTableItemListener(Table sourceTable, String contentMessage,
+            TableAction<Object> action) {
+        this.sourceTable = sourceTable;
+        this.contentMessage = contentMessage;
+        this.action = action;
+    }
 
-	@Override
-	public void handleEvent(Event event) {
-		Point pt = new Point(event.x, event.y);
-		TableItem item = sourceTable.getItem(pt);
 
-		if (item == null)
-			return;
-		for (int col = 0; col < sourceTable.getColumnCount(); col++) {
+    public void handleEvent(Event event) {
+        Point pt = new Point(event.x, event.y);
+        TableItem item = sourceTable.getItem(pt);
 
-			if (col == 0) {
-				Rectangle rect = item.getBounds(col);
-				if (rect.contains(pt)) {
-					int index = sourceTable.indexOf(item);
+        if (item == null)
+            return;
+        for (int col = 0; col < sourceTable.getColumnCount(); col++) {
 
-					deleteItemSelectedOnTable(index, item, col);
+            if (col == 0) {
+                Rectangle rect = item.getBounds(col);
+                if (rect.contains(pt)) {
+                    int index = sourceTable.indexOf(item);
 
-					break;
-				}
-			}
-		}
+                    deleteItemSelectedOnTable(index, item, col);
 
-	}
+                    break;
+                }
+            }
+        }
 
-	private void deleteItemSelectedOnTable(int index, TableItem item, int col) {
+    }
 
-		boolean showDialogConfirmation = DialogUtil.showRemoveConfirmation(
-				UIMessages.getMessage("DIALOG_CONFIRMATION_REMOVE"),
-				contentMessage, sourceTable.getShell());
+    private void deleteItemSelectedOnTable(int index, TableItem item, int col) {
 
-		if (showDialogConfirmation) {
-			action.deleteItemFromTable(index, item, col);
-		}
+        boolean showDialogConfirmation = DialogUtil.showRemoveConfirmation(
+                UIMessages.getMessage("DIALOG_CONFIRMATION_REMOVE"),
+                contentMessage, sourceTable.getShell());
 
-	}
+        if (showDialogConfirmation) {
+            action.deleteItemFromTable(index, item, col);
+        }
+
+    }
 
 }

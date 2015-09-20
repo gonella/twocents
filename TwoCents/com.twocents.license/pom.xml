@@ -27,7 +27,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.twocents.ui</groupId>
+			<groupId>com.github.gonella</groupId>
 			<artifactId>com.twocents.ui</artifactId>
 			<version>1.0.0</version>
 		</dependency>

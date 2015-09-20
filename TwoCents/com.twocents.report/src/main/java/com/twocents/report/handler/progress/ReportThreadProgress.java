@@ -4,81 +4,82 @@ import org.eclipse.swt.widgets.Shell;
 
 public abstract class ReportThreadProgress extends Thread {
 
-	private boolean isFinished = false;
+    private boolean isFinished = false;
 
-	private static ReportProgressBar progressBar=null;
+    private static ReportProgressBar progressBar=null;
 
-	private final Shell shell;
+    private final Shell shell;
 
-	private final Shell shellToCenter;
+    private final Shell shellToCenter;
 
-	/**
-	 * 
-	 * @param shellToModal - O container que vai ser MODAL
-	 * @param shellToCenter - A progress bar vai ser centralizada baseada nesse container
-	 */
-	public ReportThreadProgress(final Shell shellToModal,final Shell shellToCenter) {
-		this.shell = shellToModal;
-		this.shellToCenter = shellToCenter;
-		start();
-		
-		//if(progressBar==null)
-		{
-			progressBar = new ReportProgressBar(this);
-		}
-		progressBar.open();
-		
-	}
+    /**
+     *
+     * @param shellToModal - O container que vai ser MODAL
+     * @param shellToCenter - A progress bar vai ser centralizada baseada nesse container
+     */
+    public ReportThreadProgress(final Shell shellToModal,final Shell shellToCenter) {
+        this.shell = shellToModal;
+        this.shellToCenter = shellToCenter;
+        start();
 
-	public abstract void before();
+        //if(progressBar==null)
+        {
+            progressBar = new ReportProgressBar(this);
+        }
+        progressBar.open();
 
-	public abstract void after();
+    }
 
-	public abstract void abort();
+    public abstract void before();
 
-	public abstract void execute();
+    public abstract void after();
 
-	public void run() {
-		
-		before();
+    public abstract void abort();
 
-		//FIXME Chamada dentro de um Display.synch(ex: refresh de tela), não podem demorar muito, vão segurar a animação da progressbar.
-		
-		getShell().getDisplay().syncExec(new Runnable() {
-			
-			@Override
-			public void run() {
+    public abstract void execute();
 
-				execute();
-			}
-		});
-		
-		
+    @Override
+    public void run() {
 
-		after();
+        before();
 
-		setFinished(true);
-		
-	}
+        //FIXME Chamada dentro de um Display.synch(ex: refresh de tela), não podem demorar muito, vão segurar a animação da progressbar.
 
-	public ReportProgressBar getProgressBar() {
-		return progressBar;
-	}
+        getShell().getDisplay().syncExec(new Runnable() {
 
-	public boolean isFinished() {
-		return isFinished;
-	}
 
-	public void setFinished(boolean isFinished) {
-		this.isFinished = isFinished;
-	}
+            public void run() {
 
-	public Shell getShell() {
-		return shell;
-	}
+                execute();
+            }
+        });
 
-	public Shell getShellToCenter() {
-		return shellToCenter;
-	}
+
+
+        after();
+
+        setFinished(true);
+
+    }
+
+    public ReportProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+
+    public void setFinished(boolean isFinished) {
+        this.isFinished = isFinished;
+    }
+
+    public Shell getShell() {
+        return shell;
+    }
+
+    public Shell getShellToCenter() {
+        return shellToCenter;
+    }
 
 }
