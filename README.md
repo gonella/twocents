@@ -47,6 +47,7 @@ See the pictures below for more details.
 
 # TODO
  1. Fix issues with NIS. NSIS (Nullsoft Scriptable Install System) is a professional open source system to create Windows installers.
+ 2. Remove some ant dependencies.
  2. Fix some layout issues. 
  3. Update some tax rules.
  4. Change some jasper class reused. (Due ant to maven conversion)
