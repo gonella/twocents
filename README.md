@@ -10,7 +10,7 @@ See the pictures below for more details.
  3. Reports are built using Jasper Reports framework (http://community.jaspersoft.com/). 
  4. Database HSQLDB (http://hsqldb.org/). 
  5. Transaction/DAO layers handled by Spring and Hibernate. 
- 6. Windows Installer used is NIS. (http://nsis.sourceforge.net/Main_Page)
+ 6. Windows Installer used is NSIS. (http://nsis.sourceforge.net/Main_Page)
 
 # Features
 
@@ -46,7 +46,7 @@ See the pictures below for more details.
  1. After migrate ant to maven, some funcionalities stopped to work. E.g. generate install binary(NIS). For this reason we asked to import as maven project. 
 
 # TODO
- 1. Fix issues with NIS. NSIS (Nullsoft Scriptable Install System) is a professional open source system to create Windows installers.
+ 1. Fix issues with NSIS (Nullsoft Scriptable Install System), it is a professional open source system to create Windows installers.
  2. Remove some ant dependencies.
  2. Fix some layout issues. 
  3. Update some tax rules.
