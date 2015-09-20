@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.gonella</groupId>
+  <artifactId>TwoCents</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>com.twocents.adapter</module>
+  	<module>com.twocents.core</module>
+  	<module>com.twocents.installer</module>
+  	<module>com.twocents.license</module>
+  	<module>com.twocents.main</module>
+  	<module>com.twocents.report</module>
+  	<module>com.twocents.test</module>
+  	<module>com.twocents.ui</module>
+  </modules>
+</project>

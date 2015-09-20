@@ -16,9 +16,9 @@
 		<include name="**/*.xml" />
 		<include name="**/*.properties" />
 	</fileset>
-	
-    <path id="compile-classpath">
-        <path refid="core-classpath" />
-    </path>
-	
+
+	<path id="compile-classpath">
+		<path refid="core-classpath" />
+	</path>
+
 </project>
