@@ -70,7 +70,7 @@ public class MockData {
 
 	public void createStockBrokerMockData() {
 
-		logger.info("# Criando data default para aplicaÁ„o");
+		logger.info("# Criando data default para aplica√ß√£o");
 		Broker broker = null;
 		StockBroker stockBroker = null;
 
@@ -83,8 +83,8 @@ public class MockData {
 			} else {
 				stockBroker = new StockBroker();
 				stockBroker.setName(STOCK_BROKER01);
-				stockBroker.setEmail("gonella@gmail.com");
-				stockBroker.setTelefone("51-81335747");
+				stockBroker.setEmail("xxxx@gmail.com");
+				stockBroker.setTelefone("5555555555");
 				stockBroker.setUsername(STOCK_BROKER01);
 				stockBroker.setPassword("");
 				ContextHolderUI.setStockBrokerSelected(stockBroker);
@@ -162,7 +162,7 @@ public class MockData {
 						getPopulateOperationData().registerOperations(account,
 								list);
 					} else {
-						logger.info("**Dados n„o populados :"
+						logger.info("**Dados n√£o populados :"
 								+ account.getUser().getName());
 					}
 				} catch (CoreException e) {
@@ -184,7 +184,7 @@ public class MockData {
 
 		List<Map<OperationKey, Object>> list = new ArrayList<Map<OperationKey, Object>>();
 
-		//PosiÁ„o de carteira
+		//Posi√ß√£o de carteira
 		list.add(PopulateOperationData.createOperationMap("HBOR3",
 				OperationType.BUY, 1400, 19.56, FormatUtil
 						.parseDateAndTime("25/11/2010 10:00:00"), "-"));
