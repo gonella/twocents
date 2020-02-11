@@ -22,7 +22,13 @@ See the pictures below for more details.
  5. Export reports.
  6. Import/Export buy and sell orders into spreadsheets. 
  7. Backup data to Google Drive. 
- 
+
+# Contributors 
+ 1. Adriano Gonella
+ 2. Julio Correa
+ 3. Wagner Vernier
+ 4. Carlos Alexandre
+
 # How execute?
 
  1. Import folder "TwoCents" as maven project.
@@ -43,7 +49,9 @@ See the pictures below for more details.
 
 # Known issues
 
- 1. After migrate ant to maven, some funcionalities stopped to work. E.g. generate install binary(NIS). For this reason we asked to import as maven project. 
+ 1. After migrate ant to maven, some funcionalities stopped to work. E.g. generate install binary(NIS). For this reason we asked to import as maven project.
+ 
+
 
 # TODO
  1. Fix issues with NSIS (Nullsoft Scriptable Install System), it is a professional open source system to create Windows installers.
